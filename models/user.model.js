@@ -1,7 +1,8 @@
 const sequelize = require('../db/config');
 const { DataTypes } = require('sequelize')
+const Post = require('./post.model');
 
-module.exports =  sequelize.define('user', {
+const User = sequelize.define('user', {
     name : {
         type : DataTypes.STRING,
         allowNull : false,
@@ -13,6 +14,9 @@ module.exports =  sequelize.define('user', {
             notNull : {
                 msg : 'Please enter name!'
             }
+        },
+        set(value) {
+            this.setDataValue('name', value.toLowerCase())
         }
     },
     email : {
@@ -26,6 +30,9 @@ module.exports =  sequelize.define('user', {
             isEmail : {
                 msg : 'Please enter valid email!'
             },
+        },
+        set(value) {
+            this.setDataValue('email', value.toLowerCase())
         }
     },
     age : {
@@ -45,13 +52,6 @@ module.exports =  sequelize.define('user', {
             }
         }
     }
-},{
-    hooks : {
-        beforeValidate : (user) => {
-            if(user.name)
-                user.name = user.name.toLowerCase();
-            if(user.email)
-                user.email = user.email.toLowerCase();
-        }
-    }
 })
+
+module.exports = User;
