@@ -13,6 +13,7 @@ Post.belongsTo(User,{
     onDelete : 'CASCADE'
 });
 
+//imporatant for understanding workflow : https://github.com/nedssoft/sequelize-with-postgres-tutorial/
 
 //import routes
 const userRoutes = require('./routes/user.route')
