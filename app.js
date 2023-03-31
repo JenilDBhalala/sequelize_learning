@@ -5,7 +5,13 @@ const User = require('./models/user.model');
 const Post = require('./models/post.model');
 
 User.hasMany(Post);
-Post.belongsTo(User,{constraint: true, onDelete: 'CASCADE'});
+Post.belongsTo(User,{
+    foreignKey : {
+        name : 'userId', 
+        allowNull : false,
+    },
+    onDelete : 'CASCADE'
+});
 
 
 //import routes
