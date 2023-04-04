@@ -1,4 +1,5 @@
 const express = require('express');
+const sequelize = require('../models');
 const router = express.Router();
 const User = require('../models/user.model')
 // const {Op} = require('sequelize')
@@ -30,6 +31,30 @@ router.get('/users', async(req, res) => {
     }
 })
 
+
+
+// //fetching all users whose name includes character b : raw query
+// //it will bypass all sequelize models
+// router.get('/users', async(req, res) => {
+//     try{
+//         // const results = await sequelize.query("UPDATE users SET name='Bhavin' WHERE name='Jenil'",{
+//         //     type : sequelize.QueryTypes.UPDATE,
+//         // })
+//         // console.log(results)
+//         const users = await sequelize.query("SELECT * FROM users WHERE name LIKE '%b%'", {
+//             type : sequelize.QueryTypes.SELECT
+//         })
+//         // const users = await sequelize.query(query, {
+//         //     replacements: {nameFilter},
+//         //     type : sequelize.QueryTypes.SELECT
+//         // })
+//         res.status(200).send(users);
+//     }
+//     catch(e){
+//         res.status(500).send(e.message);
+//     }
+// })
+        
 
 //fetching users by id
 router.get('/users/:id', async(req, res) => {

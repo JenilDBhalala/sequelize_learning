@@ -24,18 +24,12 @@ const Post = sequelize.define('post', {
                 msg: 'likes must be non-negative value!'
             },
         }
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+
     }
 });
-Post.associate = function (models) {
-    // associations can be defined here
-    Post.belongsTo(models.User, {
-        foreignKey: {
-            name: 'userId',
-            allowNull: false,
-        },
-        onDelete: 'CASCADE'
-    });
 
-};
 
 module.exports = Post;
