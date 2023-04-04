@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "seed-all" : "npx sequelize-cli db:seed:all",
+    "seed-undo-all" : "npx sequelize-cli db:seed:undo:all"
   },
   "keywords": [],
   "author": "",

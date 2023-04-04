@@ -5,13 +5,7 @@ const User = require('./models/user.model');
 const Post = require('./models/post.model');
 
 User.hasMany(Post);
-Post.belongsTo(User,{
-    foreignKey : {
-        name : 'userId', 
-        allowNull : false,
-    },
-    onDelete : 'CASCADE'
-});
+Post.belongsTo(User);
 
 //imporatant for understanding workflow : https://github.com/nedssoft/sequelize-with-postgres-tutorial/
 

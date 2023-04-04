@@ -1,5 +1,5 @@
 const sequelize = require('./index');
-const {DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 const Post = sequelize.define('post', {
     caption: {
@@ -27,7 +27,12 @@ const Post = sequelize.define('post', {
     },
     userId: {
         type: DataTypes.INTEGER,
-
+        allowNull: false,
+        references: {
+            model: 'users', 
+            key: 'id' ,
+            onDelete: 'CASCADE'
+        }
     }
 });
 
